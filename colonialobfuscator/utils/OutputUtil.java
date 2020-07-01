@@ -30,7 +30,7 @@ public class OutputUtil {
 		List<ClassModifier> modifier = new ArrayList<ClassModifier>(Arrays.asList());
 		
 		modifier.clear();
-
+		
 		if(ObfuscationPanel.StringEcryptionCheckBox.isSelected()) {
 			modifier.add(new StringEncryption());
 		}
@@ -49,6 +49,9 @@ public class OutputUtil {
 		if(ObfuscationPanel.localvariablesCheckBox.isSelected()) {
 			modifier.add(new LocalVariables());
 		}
+		
+		StringEncryption.Methods.clear();
+		
 		return modifier;
 	}
 
@@ -98,6 +101,7 @@ public class OutputUtil {
 	            out.close();
 	        }
 		} catch (Exception e) {
+			e.printStackTrace();
 	}
 
         System.out.println("[Stopped] array size == " + modules().size());
